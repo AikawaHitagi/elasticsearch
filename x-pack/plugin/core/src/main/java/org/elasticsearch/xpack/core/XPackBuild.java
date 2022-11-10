@@ -29,6 +29,9 @@ public class XPackBuild {
         final String date;
 
         Path path = getElasticsearchCodebase();
+        shortHash = "Unknown";
+        date = "Unknown";
+        CURRENT = new XPackBuild(shortHash, date);
         if (path.toString().endsWith(".jar")) {
             try (JarInputStream jar = new JarInputStream(Files.newInputStream(path))) {
                 Manifest manifest = jar.getManifest();
